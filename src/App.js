@@ -4,7 +4,9 @@ import {load_google_maps, getVenues} from './Utils'
 
 class App extends Component {
 
-  
+state = {
+  google: {}
+}
   componentDidMount (){
     // Start with getting data
     this.getStarted();
@@ -12,8 +14,16 @@ class App extends Component {
   
   getStarted(){
 
-    load_google_maps().then(result => console.log(result))
-    getVenues().then(result => console.log(result))
+    load_google_maps().then(result => {
+
+      this.setState({google: result})
+    })
+    .catch(err=> console.log(err));
+    ;
+    getVenues().then(result => {
+      this.setState({venuesdata: result.data.response.groups[0].items})
+  }).catch(err=> console.log(err));
+
   }
   
   render() {
