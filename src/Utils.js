@@ -9,19 +9,29 @@ import axios from 'axios';
 
 
 export function load_google_maps() {
-    return new Promise(function(resolve, reject) {
+    
+  return new Promise((resolve, reject)=> {
       // define the global callback that will run when google maps is loaded
-      window.resolveGoogleMapsPromise = function() {
+      window.resolveGoogleMapsPromise = () =>{
         // resolve the google object
         resolve(window.google);
         // delete the global callback to tidy up since it is no longer needed
         delete window.resolveGoogleMapsPromise;
       }
-      // Now, Load the Google Maps API
+      
+      
+      //Creatae a script tag
       const script = document.createElement("script");
+      
+     //Google maps API key
       const API_KEY = 'AIzaSyB3mamzau4DG8qPRaMKdGJzQv8R8awfDbw&callback=initMap';
+      
+      //Attributes that my scrips tags needs
       script.src = `https://maps.googleapis.com/maps/api/js?libraries=places&key=${API_KEY}&callback=resolveGoogleMapsPromise`;
       script.async = true;
+      script.defer = true;
+      
+      // Now, load the created script tag to the page to load the Google Maps API
       document.body.appendChild(script);
     });
   }
