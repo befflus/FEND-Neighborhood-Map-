@@ -50,7 +50,7 @@ export function load_google_maps() {
     const parameters = {
       client_id: client_id,
       client_secret: client_secret,
-      query: 'shopping',
+      query: 'sushi',
       near: 'bergen',
       v: '20190101'
     }

@@ -10,3 +10,36 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+#sidebar {
+  box-shadow: 0px 1px 1px grey;
+  background: #f2f2f2;
+  background-color: black;
+  order: 1;
+  flex:1;
+  text-align: left;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;  
+}
+
+#container{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  }
+
+  #input{
+    margin: 20px;
+    height:25px;
+    width: 100%;
+  }
+
+  .venues-sidebar {
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 2px solid grey;
+    flex: 1;
+    height: 10%;
+  }

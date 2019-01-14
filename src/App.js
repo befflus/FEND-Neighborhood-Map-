@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import {load_google_maps, getVenues} from './Utils'
+import Map from './components/Map'
+import Sidebar from './components/Sidebar'
 
 
 class App extends Component {
@@ -69,7 +71,7 @@ class App extends Component {
 
           google.maps.event.addListener(marker, 'click', () => {
             this.infoWindow.setContent(marker.venue.name);
-            this.map.setZoom(13);
+            this.map.setZoom(12);
             this.map.setCenter(marker.position);
             this.infoWindow.open(this.map, marker);
             this.map.panBy(0, -125);
@@ -83,15 +85,20 @@ class App extends Component {
           this.setState({venuesData: this.myVenues})
         })
 }
-  
+
 
   render() {
     console.log(this.google)
     return (
-      <div>
-        <div id="map">
-
-        </div>       
+      <div id="container">
+        <Map />
+        <Sidebar 
+          venuesData={this.state.venuesData}
+          mapMarkes={this.mapMarkes}
+          infoWindow={this.infoWindow}
+          google={this.google}
+          map={this.map}
+        />       
       </div>
     );
   }
