@@ -24,12 +24,13 @@ export function load_google_maps() {
       const script = document.createElement("script");
       
      //Google maps API key
-      const API_KEY = 'AIzaSyB3mamzau4DG8qPRaMKdGJzQv8R8awfDbw&callback=initMap';
+      const API_KEY = 'AIzaSyB3mamzau4DG8qPRaMKdGJzQv8R8awfDbw';
       
       //Attributes that my scrips tags needs
       script.src = `https://maps.googleapis.com/maps/api/js?libraries=places&key=${API_KEY}&callback=resolveGoogleMapsPromise`;
       script.async = true;
       script.defer = true;
+      script.onerror = ()=>alert('OOOPS something went wrong \n\n The loading of the script failed')
       
       // Now, load the created script tag to the page to load the Google Maps API
       document.body.appendChild(script);
@@ -56,7 +57,10 @@ export function load_google_maps() {
     }
     // Axiosrequest to get data from fourSqare. 
 
-    return axios.get(endPoint + new URLSearchParams(parameters))
+    return axios.get(endPoint + new URLSearchParams(parameters)).catch((error) => {
     
+        // Something happened in setting up the request that triggered an Error
+        alert(`Sorry, failed to get information from Foursquare due to this ${error}`);
+        console.log(`Foursquare data was not retrieved due to error: ${error}`)
+    })
   }
-  
