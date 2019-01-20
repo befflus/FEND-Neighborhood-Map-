@@ -20,7 +20,8 @@ class Sidebar extends Component {
         this.props.mapMarkes.forEach(marker => {
              marker.venue.name.toLowerCase().includes(query.toLowerCase()) === true 
              ? marker.setVisible(true) 
-             :marker.setVisible(false); 
+             :marker.setVisible(false);
+              
          this.setState( {myVenues: filter, query: query})
         })
     
@@ -31,7 +32,10 @@ class Sidebar extends Component {
     listItemClick = (venue) => {
         let marker = this.props.mapMarkes.filter(mark => mark.venue.id === venue.venue.id)[0];
         console.log(marker)
-        this.props.infoWindow.setContent(marker.venue.name);
+        let content = `<div id=infowindow><h3>${venue.venue.name}</h3>
+        <p>Adress: ${venue.venue.location.formattedAddress[0]}</p>
+        </div>`
+        this.props.infoWindow.setContent(content);
              this.props.map.setZoom(12);
              this.props.map.setCenter(marker.position);
              this.props.infoWindow.open(this.map, marker);
@@ -41,15 +45,15 @@ class Sidebar extends Component {
              setTimeout(() => { marker.setAnimation(null) },1500);
              
       }
-  
-      render() {
 
+    render() {
 
     return (
-      <div id="sidebar">
-      <input id="input" value={this.state.query} onChange={(event) => {this.venueFilter(event.target.value)}}>
-            </input>
-            <br/>
+      <div aria-label="Sidebar displaying list of locations" id="sidebar" >
+            <input aria-label="search restaurant"
+            id="input" value={this.state.query} onChange={(event) => {this.venueFilter(event.target.value)}}>
+              </input>
+                <br/>
             { //myVenues.length have the value of 0. Need this ternary to show all venues in the sidebar at render
                 (this.state.myVenues.length < 1) 
                 ?
