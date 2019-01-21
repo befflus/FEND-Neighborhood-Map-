@@ -49,7 +49,7 @@ class Sidebar extends Component {
     render() {
 
     return (
-      <div aria-label="Sidebar displaying list of locations" id="sidebar" >
+      <aside aria-label="Sidebar displaying list of locations" id="sidebar" >
             <input aria-label="search restaurant"
             id="input" value={this.state.query} onChange={(event) => {this.venueFilter(event.target.value)}}>
               </input>
@@ -65,7 +65,7 @@ class Sidebar extends Component {
             <div className ="venues-sidebar" key={index} onClick={() => { this.listItemClick(venue)}}>
             {venue.venue.name }</div>)) )
             }
-      </div>
+      </aside>
     )
   }
 }

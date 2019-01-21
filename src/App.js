@@ -3,8 +3,8 @@ import './App.css';
 import {load_google_maps, getVenues} from './Utils'
 import Map from './components/Map'
 import Sidebar from './components/Sidebar'
-
-
+import Header from './components/Header'
+import Footer from './components/Footer'
 class App extends Component {
 
   state = {
@@ -92,15 +92,19 @@ class App extends Component {
   render() {
     console.log(this.google)
     return (
+      <div>
+      <Header/>
       <div id="container">
         <Map />
         <Sidebar 
           venuesData={this.state.venuesData}
           mapMarkes={this.mapMarkes}
           infoWindow={this.infoWindow}
-          google={this.google}
+          google={this.google }
           map={this.map}
         />       
+      </div>
+      <Footer/>
       </div>
     );
   }
