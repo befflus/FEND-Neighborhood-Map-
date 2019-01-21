@@ -100,7 +100,7 @@ class App extends Component {
           venuesData={this.state.venuesData}
           mapMarkes={this.mapMarkes}
           infoWindow={this.infoWindow}
-          google={this.google }
+          google={this.google}
           map={this.map}
         />       
       </div>
