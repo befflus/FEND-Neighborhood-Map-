@@ -6,8 +6,6 @@ import axios from 'axios';
   then handing that to the Map script (the Google Maps script needs a global function for a callback)
 */
 
-
-
 export function load_google_maps() {
     
   return new Promise((resolve, reject)=> {

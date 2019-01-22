@@ -31,7 +31,7 @@ class App extends Component {
 
       let google = promisesData[0]; // Store google maps object
       this.myVenues = promisesData[1].data.response.groups[0].items;// Store data from foursquare
-          console.log(google,this.myVenues) 
+                console.log(google,this.myVenues) 
       
       //Store the data as component properties so it is easyer to use the googlemaps api
       
@@ -41,6 +41,7 @@ class App extends Component {
       this.mapMarkes = [];
 
       //Make the mapinstance. Loction is Bergen City in Hordaland, Norway
+      //https://developers.google.com/maps/documentation/javascript/tutorial
 
       this.infoWindow = new google.maps.InfoWindow();
       this.map = new google.maps.Map(document.getElementById('map'), {
@@ -68,6 +69,7 @@ class App extends Component {
           });
 
           //add a listener to show an infowindow when a marker is clicked
+          //set content with data collected from foursquare
           let content = `<div id=infowindow><h3>${venues.venue.name}</h3>
           <p>Adress: ${venues.venue.location.formattedAddress[0]}</p>
           </div>`

@@ -5,7 +5,7 @@ class Sidebar extends Component {
 
     state = {
         query: '',
-        myVenues: []
+        myVenues: [],
     }
     
 
@@ -33,36 +33,35 @@ class Sidebar extends Component {
         let marker = this.props.mapMarkes.filter(mark => mark.venue.id === venue.venue.id)[0];
         console.log(marker)
         let content = `<div id=infowindow><h3>${venue.venue.name}</h3>
-        <p>Adress: ${venue.venue.location.formattedAddress[0]}</p>
-        </div>`
+                        <p>Adress: ${venue.venue.location.formattedAddress[0]}</p></div>`;
         this.props.infoWindow.setContent(content);
-             this.props.map.setZoom(12);
-             this.props.map.setCenter(marker.position);
-             this.props.infoWindow.open(this.map, marker);
-             this.props.map.panBy(0, 100);
-             if(marker.getAnimation() !==null) {marker.setAnimation(null);}
-             else{ marker.setAnimation(this.props.google.maps.Animation.BOUNCE);}
-             setTimeout(() => { marker.setAnimation(null) },1500);
-             
-      }
+        this.props.map.setZoom(12);
+        this.props.map.setCenter(marker.position);
+        this.props.infoWindow.open(this.map, marker);
+        this.props.map.panBy(0, 100);
+        if(marker.getAnimation() !==null) {marker.setAnimation(null);}
+        else{ marker.setAnimation(this.props.google.maps.Animation.BOUNCE);}
+        setTimeout(() => { marker.setAnimation(null) },1500);
+      } 
 
     render() {
 
     return (
-      <aside aria-label="Sidebar displaying list of locations" id="sidebar" >
-            <input aria-label="search restaurant"
+      <aside aria-label="Sidebar displaying list of locations" id="sidebar">
+            <input aria-label="filter restaurant" tabIndex="0"      
             id="input" value={this.state.query} onChange={(event) => {this.venueFilter(event.target.value)}}>
               </input>
                 <br/>
             { //myVenues.length have the value of 0. Need this ternary to show all venues in the sidebar at render
                 (this.state.myVenues.length < 1) 
                 ?
-                (this.props.venuesData && this.props.venuesData.length > 0 && this.props.venuesData.map((venue, index) =>(
-            <div className ="venues-sidebar" key={index} onClick={() => { this.listItemClick(venue)}}>
-            {venue.venue.name }</div>)) )
+                (this.props.venuesData && this.props.venuesData.length > 0 && this.props.venuesData.map((venue,index) =>(
+            <div className ="venues-sidebar" tabIndex="0" key={index} onClick={() => { this.listItemClick(venue)}}>
+            {venue.venue.name} 
+            </div>)) )
                 :
             (this.state.myVenues && this.state.myVenues.length > 0 && this.state.myVenues.map((venue, index) =>(
-            <div className ="venues-sidebar" key={index} onClick={() => { this.listItemClick(venue)}}>
+            <div className ="venues-sidebar" tabIndex="0" id={index} key={index} onClick={() => { this.listItemClick(venue,index)}}>
             {venue.venue.name }</div>)) )
             }
       </aside>
