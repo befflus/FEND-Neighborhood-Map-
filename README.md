@@ -1,68 +1,59 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My Neighborhood Map 'SUSHI RESTAURANTS IN BERGEN'
+===============================
 
-## Available Scripts
+# Table of Contents
 
-In the project directory, you can run:
+* [Description](#description)
+* [Project Instructions](#project-instructions)
+* [Progressive Web App and Service Worker](#Progressive-Web-App-and-Service-Worker)
+* [Deploying](#deploying)
+* [Tech used](#tech-used)
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Neighbourhood Maps is Udacity's Front End Nanodegree last project, buildt with React, Google Maps JavaScript API and at least one 3rd-party API. 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The objective of this project was to create a Progressive Web App from scratch, without any starter code. The idea was to display a google map with markers for locations, as well as a list view of the same locations, and upon clicking on any of the places listed, have more info retrieved from a 3rd-party API and displayed on screen.
 
-### `npm test`
+## Project Instructions
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Note: This project was bootstrapped with Create-React-App. Refer to its Readme for more info on how to edit files and perform common tasks. [Create-React-App](https://github.com/facebook/create-react-app/blob/master/README.md "Read ME")
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Download the zip file or git clone this repository.
+- Type `npm install` on your preferred terminal to install dependencies
+- Type `npm start` on the terminal to start the project's server.
+- Create-React-App will start a local server on http://localhost:3000. Just visit this address on your favorite browser to see the     project.
+- With your server running, any changes you make to the project files will be immediately displayed on the browser (hot reload).
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Progressive Web App and Service Worker
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Due to using Create-React-App to quickstart development, the production build is a fully functional, offline-first Progressive Web App:
 
-### `npm run eject`
+All static site assets are cached. Updates are downloaded in the background.
+The app works regardless of network state, even if offline.
+On mobile devices, the app can be added directly to the user's home screen.
+Service Worker
+It's important to note the Service Worker is functional on the production build only and it is not recommended to activate the SW during development. For more information, please refer to Create-React-App Readme.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If you want to test the SW, follow this instructions:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Run `npm run build` on the root of this project.
+- `cd build` to move into the newly created Build folder.
+- Run `npm run serve`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Alternatively, you can install the serve package globally with `npm install -g serve` and then `run serve -s build` from the main project root. 
+Your project will be served from port 5000. Just visit http://localhost:5000 to see the web app and test your Service Worker.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+##Deploying
 
-## Learn More
+To create a production build of the project, including minified and compiled files, ready for deployment, run `npm run build` on the terminal. Create-React-App 
+will generate a build folder that you can then upload to any web server.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##Tech used
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- React.js
+- Create-React-App
+- Google Maps API
+- FourSquare Places API
+- Axios
