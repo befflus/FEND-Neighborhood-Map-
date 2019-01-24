@@ -75,7 +75,6 @@ class App extends Component {
           </div>`
           google.maps.event.addListener(marker, 'click', () => {
             this.infoWindow.setContent(content);
-            this.map.setZoom(12);
             this.map.setCenter(marker.position);
             this.infoWindow.open(this.map, marker);
             this.map.panBy(0, -125);

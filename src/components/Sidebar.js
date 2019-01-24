@@ -5,23 +5,22 @@ class Sidebar extends Component {
 
     state = {
         query: '',
-        myVenues: [],
+        myVenues: []
     }
     
 
     venueFilter(query) {
 
-
         //Filter venues by the query. 
         let filter = this.props.venuesData.filter(venue => venue.venue.name.toLowerCase().includes(query.toLowerCase()))
     
-    
         //This will show the matched markers (by use of includes() method) and hide the ones that do not match the query
         this.props.mapMarkes.forEach(marker => {
+            
              marker.venue.name.toLowerCase().includes(query.toLowerCase()) === true 
              ? marker.setVisible(true) 
              :marker.setVisible(false);
-              
+             this.props.infoWindow.close(marker) 
          this.setState( {myVenues: filter, query: query})
         })
     
@@ -48,7 +47,7 @@ class Sidebar extends Component {
 
     return (
       <aside aria-label="Sidebar displaying list of locations" id="sidebar">
-            <input aria-label="filter restaurant" tabIndex="0"      
+            <input aria-label="filter" tabIndex="0"  placeholder="Filter restaurants"    
             id="input" value={this.state.query} onChange={(event) => {this.venueFilter(event.target.value)}}>
               </input>
                 <br/>
